@@ -5,3 +5,4 @@
 - [x] Hash compute
 - [x] create new block
 - [x] proof of work
+- [x] Validation of block from unverified pool to verified pool
