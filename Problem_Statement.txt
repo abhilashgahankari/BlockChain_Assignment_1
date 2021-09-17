@@ -1,0 +1,27 @@
+Programming Assignment 1
+Dexter’s Blockchain
+
+Dexter owns the most famous coffee shop of his town and has plenty of friends who often come by his shop. He uses logbooks to store the transaction data. As his shop is very famous, he often runs out of logbooks. Some of Dexter's friends have access to his shop and they would often remove/edit their transactions from the logbook which would make him lose money. Dexter recently heard about blockchain technology and is wondering how he can use it in his business so that he can continue his work more efficiently. 
+
+Help Dexter to create his own Blockchain with the following functionalities (2 points for each feature) :
+1.Dexter has information regarding all the available blocks.
+2.None of Dexter's friends should be able to edit the added transactions.
+3.Timestamp of each transaction is readily available.
+4.Dexter should have all the information regarding the completed transactions.
+
+[Hint for point 1: You need to add the blocks to the blockchain which contains basic transaction data such as Timestamp,Amount,Hash of previous block etc.]
+
+[Hint for point 4: You can keep two separate pools of transactions - verified and unverified, and all the transactions initially move inside the unverified pool from where they are verified and added to the block. 
+Update: It's totally fine if you only have 1 node for  doing the verification and addition of blocks but if you can create a decentralized blockchain with multiple nodes then it's a welcome step and will be rewarded accordingly.]
+
+Help Dexter implement his own blockchain using Python/Go/Java as per your convenience.
+
+Choose a language you are familiar with and you are free to use existing inbuilt libraries of the chosen language. 
+For example in Python, calculating the Hash of blocks can be done by using the “hashlib” library.
+
+Marking Scheme: 2 points for each feature each (= 8 marks) and the remaining 2 points will depend upon code quality and your personal touch.
+
+Group Size: 2-3 people.
+The code should be readable and properly commented.
+
+Hints are only meant to get you started and your personal innovation and extra features are welcome.
