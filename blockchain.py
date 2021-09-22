@@ -3,6 +3,7 @@
 from hashlib import new, sha256
 import json, time
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 
 #creating a single block
 class Block:
@@ -80,7 +81,8 @@ class BlockChain:
 #web server creation
 
 app = Flask(__name__)
- 
+CORS(app) 
+
 # Create the object
 # of the class blockchain
 blockchain = BlockChain()
