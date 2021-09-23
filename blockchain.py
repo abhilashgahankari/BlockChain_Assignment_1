@@ -1,10 +1,16 @@
-#############################
+#Blockchain Assignment 1
+#Abhilash Gahankari - 2020H1030113H
+#Aashita Dutta - 2020H1030130H
+#Satish Phale - 2020H1030155H
 
 from hashlib import new, sha256
 import json, time
 from flask import Flask, jsonify, request
 
-#creating a single block
+#creating a single block having index, timestamp, 
+#list of transactions, hash of previous block, nonce
+#compute_hash ensures immutable property of blockchain 
+#by creating SHA-256 hash of block
 class Block:
     def __init__(self, index, timestamp, transactions, previous_hash, nonce = 0):
         self.index = index
@@ -38,6 +44,8 @@ class BlockChain:
 
     difficulty = 2
 
+    #solves hard puzzles requiring high computation to mine block 
+    #while we not get hash starting with 0, hash is computed with nonce value incremented each time
     def proof_of_work(self, block):
         block.nonce = 0
         computed_hash = block.compute_hash()
@@ -46,6 +54,7 @@ class BlockChain:
             computed_hash = block.compute_hash()
         return computed_hash
     
+    #add new block to chain by linking hash to previous block hash 
     def add_block(self, block, proof):
         previous_hash = self.last_block.hash
         if(previous_hash != block.previous_hash):
@@ -56,13 +65,15 @@ class BlockChain:
         self.chain.append(block)
         return True        
 
+    #validate proof comparing calculated and actual hash
     def is_valid_proof(self, block, block_hash):
         return (block_hash == block.compute_hash() and block_hash.startswith('0' * BlockChain.difficulty))
     
     def add_new_transaction(self, transaction):
         self.unconfirmed_transactions.append(transaction)
 
-    #compute method also called as mine
+    #mine to validate new block and add from unconfirmed transactions to confirmed transactions pool
+    #implements proof of work consensus algorithm
     def mine(self):
         if not self.unconfirmed_transactions:
             return False
@@ -78,7 +89,12 @@ class BlockChain:
         return new_block.index
         
 #web server creation
+#Flask famework to map end points to Python functions
 
+#/mine - to tell server to mine new block
+#/pending_transations - to see list of unconfirmed transactions
+#/new_transaction - create new transaction in block
+#/chain- to return full blockchain
 app = Flask(__name__)
  
 # Create the object
@@ -92,7 +108,7 @@ def mine_unconfirmed_transactions():
         return "No transactions to mine"
     return "Block #{} is mined.".format(result)
 
-@app.route('/pending_tx')
+@app.route('/pending_transactions')
 def get_pending_tx():
     return json.dumps(blockchain.unconfirmed_transactions)
 
