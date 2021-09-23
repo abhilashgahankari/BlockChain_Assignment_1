@@ -12,7 +12,7 @@
 - None of Dexter's friends should be able to edit the added transactions - Hash() (Immutable and secured)
 - Timestamp of each transaction is readily available - CreateBlock, AddNewTransaction
 - Dexter should have all the information regarding the completed transactions - Mine(), ProofOfWork(), ValidProof()
-
+---------------------------------------------------------------------------------------------------------------------------------------------------------
 - A Block has an index, timestamp, list of transactions, HashValue of previous block, nonce
 - Add new transactions to block with new_transaction
 - Add genesis block to chain and hash it and create chain by performin new transactions to add new blocks to first block to form chain. 
