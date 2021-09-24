@@ -108,7 +108,7 @@ def mine_unconfirmed_transactions():
         return "No transactions to mine"
     return "Block #{} is mined.".format(result)
 
-@app.route('/pending_transactions')
+@app.route('/pending_transactions', methods=['GET'])
 def get_pending_tx():
     return json.dumps(blockchain.unconfirmed_transactions)
 
